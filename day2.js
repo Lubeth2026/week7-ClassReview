@@ -49,7 +49,7 @@ async function main() {
         event.preventDefault();
         const pokemonName = input.value
         const URL = "https://pokeapi.co/api/v2/pokemon/";
-         const pokemonData = await getPokemon(URL,pokemonName);
+         const pokemonData = await getPokemon(URL, pokemonName);
          if(!pokemonData){
             renderNotFound()
          }else{
@@ -57,7 +57,7 @@ async function main() {
          renderPokemon(pokemonData);
          clearFields();
          const hist = getHistory();
-         renderHistory();
+         renderHistory(hist);
         }
     })
     const hist = getHistory()
@@ -85,10 +85,10 @@ function updateHistory(search){
     localStorage.setItem("history", JSON.stringify(current))
 }
 function renderHistory(hist){
-    historyArea.textContent = ""
+    historyArea.textContent = "";
     hist.forEach((searchEntry)=>{
         const p = document.createElement("p");
-        p.textContent = searchEntry
+        p.textContent = searchEntry;
         historyArea.appendChild(p)
     });
 }
